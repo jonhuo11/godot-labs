@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce45o1ubseq87"]
+
+[ext_resource type="Script" path="res://worldgen/basic/worldgen.gd" id="1_0niet"]
+[ext_resource type="Texture2D" uid="uid://e0ewnf3epdbi" path="res://worldgen/color_tileset_16x16_Jerom&amp;Eiyeron_CC-BY-SA-3.0_8.png" id="2_f7uwx"]
+[ext_resource type="Script" path="res://worldgen/basic/camera.gd" id="3_w8te1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrql"]
+atlas = ExtResource("2_f7uwx")
+region = Rect2(0, 80, 16, 16)
+
+[node name="Worldgen" type="Node2D"]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("1_0niet")
+tile_sprite = SubResource("AtlasTexture_onrql")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_w8te1")
+speed = 128.0

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsvqmg4y5pjbw"]
+
+[ext_resource type="PackedScene" uid="uid://dhrxelht2vhs0" path="res://frogs/mob/mob.tscn" id="1_sgul2"]
+[ext_resource type="Script" path="res://frogs/spawner.gd" id="2_5outo"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 495.0
+offset_top = 372.0
+offset_right = 596.0
+offset_bottom = 429.0
+text = "Spawn"
+
+[node name="Mob" parent="." instance=ExtResource("1_sgul2")]
+position = Vector2(394, 291)
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(254, 148)
+script = ExtResource("2_5outo")
+mob_scene = ExtResource("1_sgul2")
+
+[connection signal="pressed" from="Button" to="Spawner" method="_on_button_pressed"]

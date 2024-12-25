@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://djk0baskne58y"]
+
+[ext_resource type="Script" path="res://worldgen/tilemaplayer/worldgen_tilemap.gd" id="1_730e1"]
+[ext_resource type="TileSet" uid="uid://cypw8ajg8t21p" path="res://worldgen/worldtiles.tres" id="2_dicof"]
+[ext_resource type="PackedScene" uid="uid://byv5wwvduqsnb" path="res://worldgen/tilemaplayer/walker.tscn" id="3_cv70l"]
+[ext_resource type="Script" path="res://worldgen/basic/camera.gd" id="4_76b6h"]
+
+[node name="WorldgenTilemap" type="Node2D"]
+script = ExtResource("1_730e1")
+noise_threshold = -0.1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_dicof")
+collision_enabled = false
+
+[node name="Walker" parent="." instance=ExtResource("3_cv70l")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("4_76b6h")
+speed = 32.0

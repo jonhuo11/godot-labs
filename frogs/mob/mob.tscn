@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://dhrxelht2vhs0"]
+
+[ext_resource type="Texture2D" uid="uid://cchneeeqqmrqd" path="res://frogs/mob/assets/2d_animation_frog_spritesheet.webp" id="1_b1r7e"]
+[ext_resource type="Script" path="res://frogs/mob/scripts/move.gd" id="2_gtoiw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jgug"]
+atlas = ExtResource("1_b1r7e")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1wj8"]
+atlas = ExtResource("1_b1r7e")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe8uq"]
+atlas = ExtResource("1_b1r7e")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhvlf"]
+atlas = ExtResource("1_b1r7e")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di0o3"]
+atlas = ExtResource("1_b1r7e")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4bos"]
+atlas = ExtResource("1_b1r7e")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kp1h"]
+atlas = ExtResource("1_b1r7e")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muid4"]
+atlas = ExtResource("1_b1r7e")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bwyy1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jgug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1wj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe8uq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhvlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di0o3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4bos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kp1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muid4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Mob" type="Node2D"]
+script = ExtResource("2_gtoiw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_bwyy1")
