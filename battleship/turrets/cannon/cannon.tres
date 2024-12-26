@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BattleshipTurret" load_steps=5 format=3 uid="uid://08fkkpflf4w"]
+
+[ext_resource type="Script" path="res://battleship/turrets/battleship_turret.gd" id="1_1e4fg"]
+[ext_resource type="Script" path="res://battleship/turrets/cannon/cannon_controller.gd" id="1_pfs4x"]
+[ext_resource type="Texture2D" uid="uid://dwjmvl8tqm87l" path="res://battleship/battleship.png" id="3_lyi4y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt5l4"]
+atlas = ExtResource("3_lyi4y")
+region = Rect2(8, 8, 5, 8)
+
+[resource]
+script = ExtResource("1_1e4fg")
+damage_on_hit = 1.0
+rotation_speed = 1.0
+controller = ExtResource("1_pfs4x")
+turret_texture = SubResource("AtlasTexture_xt5l4")
