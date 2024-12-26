@@ -1,4 +1,4 @@
 extends BattleshipTurretController
 
-func control(enemy_pos: Vector2, enemy_vel: Vector2) -> float:
-	return super(enemy_pos, enemy_vel)
+func control(my_pos: Vector2, my_vel: Vector2, enemy_pos: Vector2, enemy_vel: Vector2) -> float:
+	return 0
