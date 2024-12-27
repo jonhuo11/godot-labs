@@ -10,8 +10,8 @@ class ShipTurret extends ShipNode:
 	class TurretArea extends Area2D:
 		var _shape: CollisionShape2D
 		var _turret: ShipTurret
-		
-		# TODO: add a dictionary queue of targets, a target leaving will let the next target be selected
+		var _target_queue: Array[Node2D] = []
+		var _targets_in_area: Dictionary = {}
 		
 		func _init(__turret: ShipTurret, radius: float):
 			_shape = CollisionShape2D.new()
@@ -29,15 +29,26 @@ class ShipTurret extends ShipNode:
 			
 			
 		func _on_area_entered(other: Area2D) -> void:
-			if _turret.target: return
+			_targets_in_area[other.get_instance_id()] = 0
+			if _turret.target:
+				_target_queue.push_back(other)
+				return
 			_turret.target = other
 			print("Target set!")
 			
 		
 		func _on_area_exited(other: Area2D) -> void:
+			_targets_in_area.erase(other.get_instance_id())
 			if other == _turret.target:
 				_turret.target = null
 				print("Target removed")
+				
+				# pick next target
+				while len(_target_queue) > 0:
+					var next: Node2D = _target_queue.pop_front()
+					if next.get_instance_id() in _targets_in_area:
+						_turret.target = next
+						break
 			
 	
 	var _ship_body_part: ShipBodyPart
@@ -55,9 +66,17 @@ class ShipTurret extends ShipNode:
 		
 	func _process(delta: float) -> void:
 		# check for enemies in the area
+		if not target:
+			return
 		
 		# use the resource controller to control the turret rotation
-		pass
+		var ship_node = _get_ship_node()
+		var desired_angle = _resource.controller.control(ship_node.position, ship_node.current_speed, get_global_mouse_position(), Vector2.ZERO)
+		rotation = desired_angle
+		
+		
+	func _get_ship_node() -> Battleship:
+		return _ship_body_part.get_ship_node()
 	
 
 class ShipBodyPart extends ShipNode:
@@ -74,6 +93,9 @@ class ShipBodyPart extends ShipNode:
 		
 		_battleship = __battleship
 		_battleship.add_child(self)
+	
+	func get_ship_node() -> Battleship:
+		return _battleship
 
 
 @export var turrets: Array[BattleshipTurret] = []
@@ -86,6 +108,8 @@ class ShipBodyPart extends ShipNode:
 const BODY_PART_PIXEL_SIZE: int = 8
 
 var ship_body_parts: Array[ShipBodyPart] = []
+var current_speed: float = 0
+var current_rotation_speed: float = 0
 
 
 static func cap(val: float, abs_max: float) -> float:
@@ -134,8 +158,10 @@ func movement(delta: float) -> void:
 		rotation_direction += -1
 	if Input.is_key_pressed(KEY_D):
 		rotation_direction += 1
-	rotation += rotation_direction * rotation_speed * delta
-	position += Vector2(0, speed * delta * -1).rotated(rotation)
+	current_rotation_speed = rotation_direction * rotation_speed * delta
+	current_speed = speed * delta * -1
+	position += Vector2(0, current_speed).rotated(rotation)
+	rotation += current_rotation_speed
 	
 
 # Called when the node enters the scene tree for the first time.
