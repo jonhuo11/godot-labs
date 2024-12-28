@@ -34,20 +34,21 @@ class ShipTurret extends ShipNode:
 				_target_queue.push_back(other)
 				return
 			_turret.target = other
-			print("Target set!")
+			print("Target set! ", _turret.target.name)
 			
 		
 		func _on_area_exited(other: Area2D) -> void:
 			_targets_in_area.erase(other.get_instance_id())
 			if other == _turret.target:
+				print("Target removed ", _turret.target.name)
 				_turret.target = null
-				print("Target removed")
 				
 				# pick next target
 				while len(_target_queue) > 0:
 					var next: Node2D = _target_queue.pop_front()
 					if next.get_instance_id() in _targets_in_area:
 						_turret.target = next
+						print("Target set! ", _turret.target.name)
 						break
 			
 	
@@ -67,12 +68,14 @@ class ShipTurret extends ShipNode:
 	func _process(delta: float) -> void:
 		# check for enemies in the area
 		if not target:
+			rotation = 0
 			return
 		
 		# use the resource controller to control the turret rotation
 		var ship_node = _get_ship_node()
-		var desired_angle = _resource.controller.control(ship_node.position, ship_node.current_speed, get_global_mouse_position(), Vector2.ZERO)
-		rotation = desired_angle
+		# TODO: ship velocity
+		var desired_angle = _resource.controller.control(ship_node.global_position, Vector2.ZERO, target.global_position, Vector2.ZERO)
+		global_rotation = desired_angle
 		
 		
 	func _get_ship_node() -> Battleship:
