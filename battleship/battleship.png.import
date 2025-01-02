@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://dwjmvl8tqm87l"
+path="res://.godot/imported/battleship.png-a599129d468811d92c0fd2e038512d1c.image"
+
+[deps]
+
+source_file="res://battleship/battleship.png"
+dest_files=["res://.godot/imported/battleship.png-a599129d468811d92c0fd2e038512d1c.image"]
+
+[params]
+
