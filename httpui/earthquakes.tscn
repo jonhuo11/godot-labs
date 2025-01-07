@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://vjbhm40vqye6"]
+
+[ext_resource type="Script" path="res://httpui/earthquakes.gd" id="1_e2cxh"]
+
+[node name="Earthquakes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." node_paths=PackedStringArray("entries_container")]
+script = ExtResource("1_e2cxh")
+entries_container = NodePath("../ScrollContainer/GridContainer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 1080)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
