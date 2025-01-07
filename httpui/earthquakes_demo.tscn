@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://q5ijwohl23pg"]
+
+[ext_resource type="PackedScene" uid="uid://vjbhm40vqye6" path="res://httpui/earthquakes.tscn" id="1_gbl2s"]
+
+[node name="EarthquakesDemo" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(400, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Earthquakes" parent="CanvasLayer" instance=ExtResource("1_gbl2s")]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "A test label
+"
