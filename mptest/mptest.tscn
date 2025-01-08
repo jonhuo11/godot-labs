@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyp8wla875keb"]
+
+[ext_resource type="PackedScene" uid="uid://c6sojly6sbnom" path="res://mptest/ui/mpui.tscn" id="1_5jy0a"]
+[ext_resource type="Script" path="res://mptest/multiplayer_manager.gd" id="2_4oi2g"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MultiplayerUI" parent="CanvasLayer" instance=ExtResource("1_5jy0a")]
+
+[node name="ConnectionUI" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 266.0
+offset_bottom = 161.0
+
+[node name="UsernameField" type="TextEdit" parent="CanvasLayer/ConnectionUI"]
+layout_mode = 2
+placeholder_text = "Your user name"
+scroll_fit_content_height = true
+
+[node name="Host" type="Button" parent="CanvasLayer/ConnectionUI"]
+layout_mode = 2
+text = "Host
+"
+
+[node name="Join" type="Button" parent="CanvasLayer/ConnectionUI"]
+layout_mode = 2
+text = "Join"
+
+[node name="MultiplayerManager" type="Node" parent="." node_paths=PackedStringArray("local_playerlist_manager", "connection_ui", "username_input")]
+script = ExtResource("2_4oi2g")
+local_playerlist_manager = NodePath("../CanvasLayer/MultiplayerUI")
+connection_ui = NodePath("../CanvasLayer/ConnectionUI")
+username_input = NodePath("../CanvasLayer/ConnectionUI/UsernameField")
+
+[connection signal="pressed" from="CanvasLayer/ConnectionUI/Host" to="MultiplayerManager" method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/ConnectionUI/Join" to="MultiplayerManager" method="_on_join_pressed"]
