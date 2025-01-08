@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bskepftof7aat"]
+
+[ext_resource type="Script" path="res://ogatdemo/player/ogatplayer.gd" id="1_m1qps"]
+[ext_resource type="Script" path="res://ogatdemo/player/ogatgun.gd" id="2_xnyxc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fgovt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smoar"]
+albedo_color = Color(0, 0.278431, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ooxq6"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_axhak"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ms2es"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_jt5dt"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_m1qps")
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_fgovt")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_smoar")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ooxq6")
+
+[node name="Gun" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.510737, 1.09246, 0.421891)
+script = ExtResource("2_xnyxc")
+
+[node name="Gun" type="StaticBody3D" parent="Gun"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Gun/Gun"]
+mesh = SubResource("PrismMesh_axhak")
+surface_material_override/0 = SubResource("StandardMaterial3D_ms2es")
+
+[node name="ShootPoint" type="RayCast3D" parent="Gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.786496)
+target_position = Vector3(0, 0, 10)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Gun"]
+stream = SubResource("AudioStreamGenerator_jt5dt")
+volume_db = 1.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]

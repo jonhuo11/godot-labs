@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://rxbc6mkwl0e0"]
+
+[ext_resource type="PackedScene" uid="uid://bskepftof7aat" path="res://ogatdemo/player/ogatplayer.tscn" id="1_y0usb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ht3bw"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d66e6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2l5b2"]
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltbrn"]
+albedo_color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[node name="Ogatdemo" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_ht3bw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_d66e6")
+
+[node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.596544)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+shape = SubResource("BoxShape3D_ht3bw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(5.71195, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_2l5b2")
+surface_material_override/0 = SubResource("StandardMaterial3D_ltbrn")
+
+[node name="Player" parent="." instance=ExtResource("1_y0usb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.495)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.454053, 0.890975, 0, -0.890975, 0.454053, 0, 100, 0)
+light_color = Color(0.903598, 0.903598, 0.903598, 1)
+light_energy = 0.3
+shadow_enabled = true
+directional_shadow_max_distance = 150.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.338853, 0.940839, 0, -0.940839, 0.338853, 0, 30, 2)
+fov = 90.0
