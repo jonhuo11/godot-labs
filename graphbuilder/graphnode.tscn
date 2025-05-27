@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddnf4q77ws823"]
+
+[ext_resource type="Texture2D" uid="uid://betecorx36x56" path="res://graphbuilder/assets/Pan_Blue_Circle.png" id="1_7j7o5"]
+[ext_resource type="Script" path="res://graphbuilder/graphnode.gd" id="1_8nhtj"]
+
+[node name="Graphnode" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8nhtj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("1_7j7o5")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 11.0
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
