@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dawapv5l0jg5w"]
+
+[ext_resource type="Script" path="res://graphbuilder/graphbuilder.gd" id="1_vwo0c"]
+
+[node name="graphbuilder" type="Node2D"]
+script = ExtResource("1_vwo0c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NewNode" type="Button" parent="CanvasLayer"]
+offset_left = 136.0
+offset_top = 165.0
+offset_right = 295.0
+offset_bottom = 230.0
+text = "New Node"
+
+[connection signal="pressed" from="CanvasLayer/NewNode" to="." method="_on_button_pressed"]
