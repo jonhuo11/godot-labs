@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bv82tp03p1mng"]
+
+[ext_resource type="Script" path="res://boids/boid/boid.gd" id="1_1oxn6"]
+[ext_resource type="Texture2D" uid="uid://bxo3rqikbql8v" path="res://boids/boid/assets/fish.png" id="2_qwbio"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovu17"]
+height = 126.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5h58"]
+atlas = ExtResource("2_qwbio")
+region = Rect2(0, 423, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xp6d"]
+atlas = ExtResource("2_qwbio")
+region = Rect2(148, 423, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg27e"]
+atlas = ExtResource("2_qwbio")
+region = Rect2(296, 423, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg53w"]
+atlas = ExtResource("2_qwbio")
+region = Rect2(444, 423, 148, 141)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kpc32"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5h58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xp6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg27e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg53w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Boid" type="RigidBody2D"]
+collision_layer = 2
+gravity_scale = 0.0
+script = ExtResource("1_1oxn6")
+others_query_radius = 600
+sep_factor = 50
+mouse_factor = 0
+max_steering_force = 100
+steering_force_factor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(1.8, 1)
+shape = SubResource("CapsuleShape2D_ovu17")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_kpc32")
+frame_progress = 0.813184

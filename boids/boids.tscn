@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://8q7svlkgy3fa"]
+
+[ext_resource type="PackedScene" uid="uid://bv82tp03p1mng" path="res://boids/boid/boid.tscn" id="1_5heax"]
+
+[node name="Boids" type="Node2D"]
+rotation = -0.27157
+
+[node name="Boid" parent="." instance=ExtResource("1_5heax")]
+rotation = 0.658118
+linear_velocity = Vector2(10, 0)
+
+[node name="Boid2" parent="." instance=ExtResource("1_5heax")]
+position = Vector2(-330, -181)
+rotation = 0.0239368
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-5, -4)
+rotation = 0.000474348
+zoom = Vector2(0.63, 0.63)
+
+[node name="Boid3" parent="." instance=ExtResource("1_5heax")]
+position = Vector2(431, -73)
