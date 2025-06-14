@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1taxbuc7i0pi"]
 
-[ext_resource type="Script" path="res://httpui/earthquake_entry.gd" id="1_0sl54"]
+[ext_resource type="Script" uid="uid://dtrnmasbpvcot" path="res://httpui/earthquake_entry.gd" id="1_0sl54"]
 
 [node name="EarthquakeEntry" type="HBoxContainer"]
 anchors_preset = 15

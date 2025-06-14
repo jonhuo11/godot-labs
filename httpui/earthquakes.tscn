@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://vjbhm40vqye6"]
 
-[ext_resource type="Script" path="res://httpui/earthquakes.gd" id="1_e2cxh"]
+[ext_resource type="Script" uid="uid://cdbuguhmqc010" path="res://httpui/earthquakes.gd" id="1_e2cxh"]
 
 [node name="Earthquakes" type="Control"]
 layout_mode = 3

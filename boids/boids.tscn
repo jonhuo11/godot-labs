@@ -1,10 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://8q7svlkgy3fa"]
 
 [ext_resource type="PackedScene" uid="uid://bv82tp03p1mng" path="res://boids/boid/boid.tscn" id="1_5heax"]
-[ext_resource type="Script" path="res://boids/boid_spawner.gd" id="1_m0akm"]
+[ext_resource type="Script" uid="uid://cgt56nmyn85ol" path="res://boids/boid_spawner.gd" id="1_m0akm"]
 
 [node name="Boids" type="Node2D"]
-rotation = -0.27157
 script = ExtResource("1_m0akm")
 boid_scene = ExtResource("1_5heax")
 

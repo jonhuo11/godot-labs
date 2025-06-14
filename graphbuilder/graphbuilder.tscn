@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dawapv5l0jg5w"]
 
-[ext_resource type="Script" path="res://graphbuilder/graphbuilder.gd" id="1_vwo0c"]
+[ext_resource type="Script" uid="uid://c5eswfp85rau7" path="res://graphbuilder/graphbuilder.gd" id="1_vwo0c"]
 
 [node name="graphbuilder" type="Node2D"]
 script = ExtResource("1_vwo0c")

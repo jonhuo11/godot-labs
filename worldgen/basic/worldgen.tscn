@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce45o1ubseq87"]
 
-[ext_resource type="Script" path="res://worldgen/basic/worldgen.gd" id="1_0niet"]
+[ext_resource type="Script" uid="uid://cj8sgbutek3ox" path="res://worldgen/basic/worldgen.gd" id="1_0niet"]
 [ext_resource type="Texture2D" uid="uid://e0ewnf3epdbi" path="res://worldgen/color_tileset_16x16_Jerom&amp;Eiyeron_CC-BY-SA-3.0_8.png" id="2_f7uwx"]
-[ext_resource type="Script" path="res://worldgen/basic/camera.gd" id="3_w8te1"]
+[ext_resource type="Script" uid="uid://wdh4ckt5rdge" path="res://worldgen/basic/camera.gd" id="3_w8te1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrql"]
 atlas = ExtResource("2_f7uwx")

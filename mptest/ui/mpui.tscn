@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6sojly6sbnom"]
 
-[ext_resource type="Script" path="res://mptest/ui/mpui.gd" id="1_1isvn"]
+[ext_resource type="Script" uid="uid://cmnlmbcrbgbdt" path="res://mptest/ui/mpui.gd" id="1_1isvn"]
 
 [node name="Mpui" type="Control"]
 layout_mode = 3

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddnf4q77ws823"]
 
 [ext_resource type="Texture2D" uid="uid://betecorx36x56" path="res://graphbuilder/assets/Pan_Blue_Circle.png" id="1_7j7o5"]
-[ext_resource type="Script" path="res://graphbuilder/graphnode.gd" id="1_8nhtj"]
+[ext_resource type="Script" uid="uid://ba0cnip6dwfqi" path="res://graphbuilder/graphnode.gd" id="1_8nhtj"]
 
 [node name="Graphnode" type="Control"]
 layout_mode = 3

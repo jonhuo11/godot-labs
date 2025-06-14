@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dhrxelht2vhs0"]
 
 [ext_resource type="Texture2D" uid="uid://cchneeeqqmrqd" path="res://frogs/mob/assets/2d_animation_frog_spritesheet.webp" id="1_b1r7e"]
-[ext_resource type="Script" path="res://frogs/mob/scripts/move.gd" id="2_gtoiw"]
+[ext_resource type="Script" uid="uid://c5ul42h3p5ah5" path="res://frogs/mob/scripts/move.gd" id="2_gtoiw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3jgug"]
 atlas = ExtResource("1_b1r7e")

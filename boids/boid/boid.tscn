@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bv82tp03p1mng"]
 
-[ext_resource type="Script" path="res://boids/boid/boid.gd" id="1_1oxn6"]
+[ext_resource type="Script" uid="uid://kdr3r5qe0est" path="res://boids/boid/boid.gd" id="1_1oxn6"]
 [ext_resource type="Texture2D" uid="uid://bxo3rqikbql8v" path="res://boids/boid/assets/fish.png" id="2_qwbio"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovu17"]

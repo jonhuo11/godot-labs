@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsvqmg4y5pjbw"]
 
 [ext_resource type="PackedScene" uid="uid://dhrxelht2vhs0" path="res://frogs/mob/mob.tscn" id="1_sgul2"]
-[ext_resource type="Script" path="res://frogs/spawner.gd" id="2_5outo"]
+[ext_resource type="Script" uid="uid://b21iy38vkgkoc" path="res://frogs/spawner.gd" id="2_5outo"]
 
 [node name="Node2D" type="Node2D"]
 

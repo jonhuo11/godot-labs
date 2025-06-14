@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://byv5wwvduqsnb"]
 
 [ext_resource type="Texture2D" uid="uid://e0ewnf3epdbi" path="res://worldgen/color_tileset_16x16_Jerom&amp;Eiyeron_CC-BY-SA-3.0_8.png" id="1_f4rva"]
-[ext_resource type="Script" path="res://worldgen/tilemaplayer/walker.gd" id="1_pe7tv"]
+[ext_resource type="Script" uid="uid://bkrm1bj0knk6g" path="res://worldgen/tilemaplayer/walker.gd" id="1_pe7tv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7gwgs"]
 atlas = ExtResource("1_f4rva")

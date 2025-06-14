@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://djk0baskne58y"]
 
-[ext_resource type="Script" path="res://worldgen/tilemaplayer/worldgen_tilemap.gd" id="1_730e1"]
+[ext_resource type="Script" uid="uid://cbulsin0ybpak" path="res://worldgen/tilemaplayer/worldgen_tilemap.gd" id="1_730e1"]
 [ext_resource type="TileSet" uid="uid://cypw8ajg8t21p" path="res://worldgen/worldtiles.tres" id="2_dicof"]
 [ext_resource type="PackedScene" uid="uid://byv5wwvduqsnb" path="res://worldgen/tilemaplayer/walker.tscn" id="3_cv70l"]
-[ext_resource type="Script" path="res://worldgen/basic/camera.gd" id="4_76b6h"]
+[ext_resource type="Script" uid="uid://wdh4ckt5rdge" path="res://worldgen/basic/camera.gd" id="4_76b6h"]
 
 [node name="WorldgenTilemap" type="Node2D"]
 script = ExtResource("1_730e1")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyp8wla875keb"]
 
 [ext_resource type="PackedScene" uid="uid://c6sojly6sbnom" path="res://mptest/ui/mpui.tscn" id="1_5jy0a"]
-[ext_resource type="Script" path="res://mptest/multiplayer_manager.gd" id="2_4oi2g"]
+[ext_resource type="Script" uid="uid://j3chtor8ke3b" path="res://mptest/multiplayer_manager.gd" id="2_4oi2g"]
 
 [node name="Node2D" type="Node2D"]
 
