@@ -46,11 +46,9 @@ animations = [{
 collision_layer = 2
 gravity_scale = 0.0
 script = ExtResource("1_1oxn6")
-others_query_radius = 600
-sep_factor = 50
-mouse_factor = 0
-max_steering_force = 100
-steering_force_factor = 1
+others_query_radius = 750
+max_steering_force = 500.0
+steering_force_factor = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
