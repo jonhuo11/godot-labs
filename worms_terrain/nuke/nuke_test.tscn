@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2hiap3btcwy5"]
+
+[ext_resource type="Script" uid="uid://04y737lssfkx" path="res://worms_terrain/nuke/scripts/nuke_test.gd" id="1_tbsj0"]
+[ext_resource type="PackedScene" uid="uid://bqmfjq2i8e4xp" path="res://worms_terrain/nuke/nuke.tscn" id="2_jwvba"]
+
+[node name="NukeTest" type="Node2D"]
+script = ExtResource("1_tbsj0")
+NukeScene = ExtResource("2_jwvba")
+
+[node name="Camera2D" type="Camera2D" parent="."]

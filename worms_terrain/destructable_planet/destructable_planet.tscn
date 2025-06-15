@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqak72nvtudnj"]
+
+[ext_resource type="Texture2D" uid="uid://ct247o7jihk6g" path="res://worms_terrain/destructable_planet/assets/the_moon.png" id="1_3e5l0"]
+[ext_resource type="Script" uid="uid://boenwo0h7opjf" path="res://worms_terrain/destructable_planet/scripts/clip.gd" id="1_ic0qn"]
+
+[node name="DestructablePlanet" type="Node2D"]
+script = ExtResource("1_ic0qn")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture = ExtResource("1_3e5l0")
+polygon = PackedVector2Array(164.746, 4.10621, 118.685, 11.1925, 38.965, 62.5678, 7.0769, 147.603, 7.08929, 217.158, 30.6688, 287.897, 94.3334, 342.13, 167.43, 368.067, 252.316, 342.13, 325.412, 276.107, 344.276, 158.21, 278.682, 42.1172)
+uv = PackedVector2Array(164.746, 4.10621, 118.685, 11.1925, 38.965, 62.5678, 7.0769, 147.603, 7.08929, 217.158, 30.6688, 287.897, 94.3334, 342.13, 167.43, 368.067, 252.316, 342.13, 325.412, 276.107, 344.276, 158.21, 278.682, 42.1172)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]

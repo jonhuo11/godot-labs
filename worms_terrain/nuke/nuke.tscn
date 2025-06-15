@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqmfjq2i8e4xp"]
+
+[ext_resource type="Texture2D" uid="uid://c3tsohdvv50mg" path="res://worms_terrain/nuke/assets/nuke.png" id="1_8xxqp"]
+[ext_resource type="Script" uid="uid://3xdmaamwabph" path="res://worms_terrain/nuke/scripts/nuke.gd" id="1_qnsu1"]
+[ext_resource type="PackedScene" uid="uid://foo013v6xxao" path="res://worms_terrain/nuke/explosion.tscn" id="2_voei0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qnsu1"]
+
+[node name="Nuke" type="RigidBody2D"]
+disable_mode = 1
+gravity_scale = 0.0
+script = ExtResource("1_qnsu1")
+max_thrust_force = 100
+Explosion = ExtResource("2_voei0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.64, 1)
+shape = SubResource("CapsuleShape2D_qnsu1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.3, 0)
+rotation = -1.5708
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_8xxqp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-24, -14, -19, -21, -12, -24, -7, -28, -1, -28, 5, -26, 11, -25, 17, -24, 21, -20, 22, -16, 22, -12, 24, -8, 25, -6, 25, -3, 25, 0, 25, 3, 25, 5, 25, 7, 24, 10, 22, 14, 18, 19, 13, 22, 7, 24, 1, 25, -7, 25, -12, 24, -18, 20, -19, 17, -20, 13, -21, 10, -22, 6, -23, 3, -26, 0, -26, -5, -25, -8, -24, -10)
+disabled = true

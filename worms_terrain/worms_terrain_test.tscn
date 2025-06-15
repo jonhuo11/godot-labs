@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://n5d5ku5oidrr"]
+
+[ext_resource type="Script" uid="uid://dy6urvesu061l" path="res://worms_terrain/worms_terrain_test.gd" id="1_3e2yj"]
+[ext_resource type="PackedScene" uid="uid://dqak72nvtudnj" path="res://worms_terrain/destructable_planet/destructable_planet.tscn" id="1_opysg"]
+[ext_resource type="PackedScene" uid="uid://bqmfjq2i8e4xp" path="res://worms_terrain/nuke/nuke.tscn" id="2_8yuww"]
+
+[node name="WormsTerrainTest" type="Node2D"]
+script = ExtResource("1_3e2yj")
+NukeScene = ExtResource("2_8yuww")
+
+[node name="DestructablePlanet" parent="." instance=ExtResource("1_opysg")]
+position = Vector2(1399, 550)
+
+[node name="DestructablePlanet2" parent="." instance=ExtResource("1_opysg")]
+position = Vector2(242, 161)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(901, 517)
+zoom = Vector2(0.495, 0.495)
