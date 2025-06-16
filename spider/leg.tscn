@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://hioqtg0npkdf"]
+
+[ext_resource type="Script" uid="uid://drykdrtmmtpfg" path="res://spider/leg.gd" id="1_yfya8"]
+
+[node name="leghip" type="Node2D"]
+script = ExtResource("1_yfya8")
+
+[node name="leg" type="Polygon2D" parent="."]
+position = Vector2(-89, -129)
+rotation = -3.12619
+color = Color(0.0214346, 0.0214346, 0.0214346, 1)
+polygon = PackedVector2Array(-89.5, -156.5, -101.5, -103.5, -99.5, -43.5, -90.5, 73.5, -79.5, 177.5, -71.5, 74.5, -67.5, -43.5, -74.5, -109.5)
+uv = PackedVector2Array(-89.5, -156.5, -101.5, -103.5, -99.5, -43.5, -90.5, 73.5, -79.5, 177.5, -71.5, 74.5, -67.5, -43.5, -74.5, -109.5)
+
+[node name="foot" type="Node2D" parent="."]
+position = Vector2(-5, -282)

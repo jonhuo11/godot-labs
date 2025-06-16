@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://df1m6sjstyknp"]
+
+[ext_resource type="PackedScene" uid="uid://bownbf0b8espv" path="res://spider/spider.tscn" id="1_i0w7s"]
+[ext_resource type="Texture2D" uid="uid://c4g5qu7sw5p3w" path="res://spider/assets/bricks.jpg" id="2_2ifxm"]
+
+[node name="TestSpider" type="Node2D"]
+
+[node name="Spider" parent="." instance=ExtResource("1_i0w7s")]
+position = Vector2(-365, -157)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.145, 0.145)
+
+[node name="Bricks" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-64, -233)
+scale = Vector2(27.5565, 24.3011)
+texture = ExtResource("2_2ifxm")

@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://bownbf0b8espv"]
+
+[ext_resource type="PackedScene" uid="uid://hioqtg0npkdf" path="res://spider/leg.tscn" id="1_l53rd"]
+[ext_resource type="Script" uid="uid://cwx7f2koq2li6" path="res://spider/spider.gd" id="1_t7oa7"]
+
+[node name="Spider" type="Node2D" node_paths=PackedStringArray("top_left_leg", "mid_left_leg", "back_left_leg", "top_right_leg", "mid_right_leg", "back_right_leg", "hind_left_leg", "hind_right_leg")]
+script = ExtResource("1_t7oa7")
+max_allowed_dist_from_rel_desired_foot_pos = 75.0
+random_new_target_max_radius = 50.0
+move_spd = 200.0
+top_left_leg = NodePath("body/leg")
+mid_left_leg = NodePath("body/leg1")
+back_left_leg = NodePath("body/leg2")
+top_right_leg = NodePath("body/leg3")
+mid_right_leg = NodePath("body/leg4")
+back_right_leg = NodePath("body/leg5")
+hind_left_leg = NodePath("body/leg6")
+hind_right_leg = NodePath("body/leg7")
+
+[node name="body" type="Polygon2D" parent="."]
+position = Vector2(26, -293)
+color = Color(0.194349, 0.194349, 0.194349, 1)
+polygon = PackedVector2Array(-44.97, 6.05299, -96.97, 18.053, -128.97, 52.053, -140.97, 104.053, -130.97, 152.053, -74.97, 197.053, -117.855, 242.296, -167.635, 293.539, -176.419, 352.103, -157.386, 420.916, -98.8219, 461.911, -21.2246, 473.624, 51.9804, 453.126, 116.401, 365.28, 107.616, 274.506, 63.6932, 230.583, -2.19128, 202.765, 37.3394, 163.235, 65.1573, 113.455, 57.8368, 63.6757, 24.1625, 19.7527)
+uv = PackedVector2Array(-44.97, 6.05299, -96.97, 18.053, -128.97, 52.053, -140.97, 104.053, -130.97, 152.053, -74.97, 197.053, -117.855, 242.296, -167.635, 293.539, -176.419, 352.103, -157.386, 420.916, -98.8219, 461.911, -21.2246, 473.624, 51.9804, 453.126, 116.401, 365.28, 107.616, 274.506, 63.6932, 230.583, -2.19128, 202.765, 37.3394, 163.235, 65.1573, 113.455, 57.8368, 63.6757, 24.1625, 19.7527)
+
+[node name="leg" parent="body" instance=ExtResource("1_l53rd")]
+position = Vector2(-137, 288)
+rotation = -0.769585
+
+[node name="leg1" parent="body" instance=ExtResource("1_l53rd")]
+position = Vector2(-165, 319)
+rotation = -1.3441
+
+[node name="leg2" parent="body" instance=ExtResource("1_l53rd")]
+position = Vector2(-165, 372)
+rotation = -1.91803
+
+[node name="leg3" parent="body" instance=ExtResource("1_l53rd")]
+position = Vector2(89, 278)
+rotation = 0.822139
+
+[node name="leg4" parent="body" instance=ExtResource("1_l53rd")]
+position = Vector2(100, 324)
+rotation = 1.35841
+
+[node name="leg5" parent="body" instance=ExtResource("1_l53rd")]
+position = Vector2(93, 388)
+rotation = 1.76416
+
+[node name="leg6" parent="body" instance=ExtResource("1_l53rd")]
+position = Vector2(-129, 434)
+rotation = -2.45989
+
+[node name="leg7" parent="body" instance=ExtResource("1_l53rd")]
+position = Vector2(44, 433)
+rotation = 2.34834
