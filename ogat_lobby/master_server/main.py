@@ -39,18 +39,17 @@ class Serializable(ABC):
         raise NotImplementedError
 
 
-type ServerTuple = Tuple[str, int, str, int, int]
-# ip, port, name, max_players, connected_players
+type ServerTuple = Tuple[str, int, str, int]
+# ip, port, name, max_players
 
 
 class Server(Serializable):
     def __init__(self, server_tuple: ServerTuple):
-        ip, port, name, max_players, connected_players = server_tuple
+        ip, port, name, max_players = server_tuple
         self.ip = ip
         self.port = port
         self.name = name
         self.max_players = max_players
-        self.connected_players = connected_players
 
     def json(self) -> dict:
         return {
@@ -58,7 +57,6 @@ class Server(Serializable):
             "port": self.port,
             "name": self.name,
             "max_players": self.max_players,
-            "connected_players": self.connected_players,
         }
 
     @classmethod
@@ -68,7 +66,6 @@ class Server(Serializable):
             int(json["port"]),
             name,
             int(json["max_players"]),
-            int(json.get("connected_players", 0)),
         ))
 
 
@@ -119,10 +116,6 @@ async def add_lobby(lobby_name: str, body: dict):
         raise HTTPException(400, "port out of range")
     if server.max_players <= 0:
         raise HTTPException(400, "max_players must be > 0")
-    if server.connected_players < 0:
-        raise HTTPException(400, "connected_players must be >= 0")
-    if server.connected_players > server.max_players:
-        raise HTTPException(400, "connected_players > max_players")
 
     ok = await server_list.add(server)
     if not ok:
