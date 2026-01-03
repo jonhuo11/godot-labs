@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://du5noiystd7pn"]
+
+[ext_resource type="Script" uid="uid://c4os6nimddwyl" path="res://ogat_lobby/server_list/server_list.gd" id="1_r70bc"]
+
+[node name="ServerList" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+script = ExtResource("1_r70bc")
+
+[node name="ServerListContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -256.0
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 520.0
+
+[node name="ListRefreshTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+ignore_time_scale = true
+
+[node name="HostServerButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -96.0
+offset_top = 24.0
+offset_right = 89.0
+offset_bottom = 55.0
+toggle_mode = true
+text = "Host server"
+
+[node name="NewServerPopup" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -96.0
+offset_top = 72.0
+offset_right = 200.0
+offset_bottom = 240.0
+
+[node name="ServerNameInput" type="TextEdit" parent="NewServerPopup"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Server name
+"
+emoji_menu_enabled = false
+
+[node name="PortInput" type="TextEdit" parent="NewServerPopup"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Port"
+emoji_menu_enabled = false
+
+[node name="MaxPlayersInput" type="TextEdit" parent="NewServerPopup"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Max players"
+emoji_menu_enabled = false
+
+[node name="Start server" type="Button" parent="NewServerPopup"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Start server"
+
+[connection signal="toggled" from="HostServerButton" to="." method="_on_host_server_button_toggled"]
+[connection signal="pressed" from="NewServerPopup/Start server" to="." method="_on_start_server_pressed"]

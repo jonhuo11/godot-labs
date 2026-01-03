@@ -1,6 +1,6 @@
 from typing import Dict, Tuple
 from abc import ABC, abstractmethod
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 import asyncio
 from contextlib import asynccontextmanager
 
@@ -60,11 +60,11 @@ class Server(Serializable):
         }
 
     @classmethod
-    def from_json(cls, json: dict, name: str) -> "Server":
+    def from_json(cls, json: dict) -> "Server":
         return cls((
-            json["ip"],
+            json.get("ip", ""),
             int(json["port"]),
-            name,
+            json.get("name", "Unnamed Server"),
             int(json["max_players"]),
         ))
 
@@ -95,27 +95,30 @@ server_list = ServerList()
 app = FastAPI()
 
 
-@app.get("/")
+@app.get("/lobbies")
 async def root():
     return await server_list.list()
 
 
-@app.put("/lobbies/{lobby_name}", status_code=201)
-async def add_lobby(lobby_name: str, body: dict):
-    # Minimal validation
-    for k in ("ip", "port", "max_players"):
+@app.post("/lobbies", status_code=200)
+async def add_lobby(req: Request, body: dict):
+    for k in ("name", "port", "max_players"):
         if k not in body:
             raise HTTPException(400, f"missing field: {k}")
 
     try:
-        server = Server.from_json(body, lobby_name)
+        server = Server.from_json(body)
     except Exception:
         raise HTTPException(400, "invalid field types")
 
+    if server.ip != "":
+        raise HTTPException(400, "the ip is inferred and returned, not passed")
     if server.port < 1 or server.port > 65535:
         raise HTTPException(400, "port out of range")
     if server.max_players <= 0:
         raise HTTPException(400, "max_players must be > 0")
+    
+    server.ip = req.client.host
 
     ok = await server_list.add(server)
     if not ok:
