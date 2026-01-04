@@ -33,17 +33,16 @@ func _ready() -> void:
 	assert(name == "Server", "must be named server")
 
 
-# ========== Server logic ==========
+#region Server logic
 func _on_recv_message_from_client(msg: ChatMessage) -> void:
 	s_message_log.append(msg)
 	inform_recv_message(msg) # relays message to all clients
 
 	# debug: confirm the server received message
 	print("server (id: %d) received message %s from %d" % [multiplayer.get_unique_id(), msg.message, multiplayer.get_remote_sender_id()])
+#endregion
 
-
-# ========== RPCs ==========
-
+#region RPC
 @rpc("any_peer", "call_local", "reliable")
 func request_connected_rpc():
 	if !multiplayer.is_server():
@@ -84,3 +83,4 @@ func request_send_message_rpc(msg_pba: PackedByteArray):
 
 func request_send_message(msg: ChatMessage):
 	request_send_message_rpc.rpc_id(SERVER_ID, msg.serialize())
+#endregion

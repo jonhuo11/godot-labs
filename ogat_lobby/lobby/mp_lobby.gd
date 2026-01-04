@@ -51,7 +51,7 @@ func _ready() -> void:
 			return
 		var data = json.get_data()
 		print("master server response: %s" % data)
-		var ip = str(data["lobby"]["ip"])
+		var ip = str(LibOgat.dig(data, ["lobby", "ip"], ""))
 		ogat_lobby.ip = ip
 	else:
 		# connect to the server with the given ip

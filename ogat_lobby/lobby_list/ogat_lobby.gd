@@ -33,7 +33,10 @@ static func from_json(json_str: String) -> OgatLobby:
 		push_error("failed to parse json_parser body")
 		return
 	var data = json_parser.get_data()
+
+	# TODO: use dig
 	return OgatLobby.new(data["name"], data["ip"], int(data["port"]), int(data["max_players"]))
 
 static func from_dict(d: Dictionary) -> OgatLobby:
+	# TODO: use dig
 	return OgatLobby.new(d["name"], d["ip"], int(d["port"]), int(d["max_players"]))

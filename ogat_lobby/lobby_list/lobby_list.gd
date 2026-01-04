@@ -42,10 +42,7 @@ func _got_server_list(result, response_code, _headers, body):
 		return
 	var data = json_parser.get_data()
 
-	var lobbies: Dictionary = {}
-	if "lobbies" in data:
-		lobbies = data["lobbies"]
-	
+	var lobbies = LibOgat.dig(data, ["lobbies"], {})
 	for lobby_name in lobbies:
 		var lobby = OgatLobby.from_dict(lobbies[lobby_name])
 
@@ -53,6 +50,8 @@ func _got_server_list(result, response_code, _headers, body):
 		
 		if lobby_name in server_list_ui_buttons:
 			server_list_ui_buttons[lobby_name].text = lobby.info()
+			var n := LibOgat.clear_handlers(server_list_ui_buttons[lobby_name].pressed)
+			print("cleaned up %d signal handlers on old join button for %s" % [n, lobby_name])
 		else:
 			var new_button := JoinServerButton.instantiate()
 			new_button.text = lobby.info()
@@ -60,6 +59,12 @@ func _got_server_list(result, response_code, _headers, body):
 			server_list_ui_buttons[lobby_name] = new_button
 
 		# subscribe to the click event
+		server_list_ui_buttons[lobby_name].pressed.connect(_join_server_func(lobby_name))
+
+
+func _join_server_func(lobby_name: String) -> Callable:
+	return func() -> void:
+		print("joining lobby %s" % lobby_name)
 		
 
 func _on_list_refresh_timer_timeout():
