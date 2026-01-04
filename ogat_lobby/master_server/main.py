@@ -87,7 +87,7 @@ class ServerList(Serializable):
 
     def json(self) -> dict:
         return {
-            "servers": {name: srv.json() for name, srv in self._list.items()}
+            "lobbies": {name: srv.json() for name, srv in self._list.items()}
         }
 
 

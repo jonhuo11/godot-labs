@@ -1,4 +1,4 @@
-class_name OgatServer extends RefCounted
+class_name OgatLobby extends RefCounted
 
 var name: String
 var ip: String
@@ -27,6 +27,13 @@ func json() -> String:
 	}
 	return JSON.stringify(dict)
 
-# TODO: implement
-func from_json(_json: String) -> OgatServer:
-	return OgatServer.new("", "", 0, 0)
+static func from_json(json_str: String) -> OgatLobby:
+	var json_parser := JSON.new()
+	if json_parser.parse(json_str) != OK:
+		push_error("failed to parse json_parser body")
+		return
+	var data = json_parser.get_data()
+	return OgatLobby.new(data["name"], data["ip"], int(data["port"]), int(data["max_players"]))
+
+static func from_dict(d: Dictionary) -> OgatLobby:
+	return OgatLobby.new(d["name"], d["ip"], int(d["port"]), int(d["max_players"]))

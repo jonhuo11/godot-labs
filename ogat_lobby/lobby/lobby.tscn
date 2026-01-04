@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://n6n2rpx6cavk"]
+
+[ext_resource type="Script" uid="uid://cvwqh65pcga1b" path="res://ogat_lobby/lobby/mp_lobby.gd" id="1_d0lhn"]
+[ext_resource type="Script" uid="uid://boajp0k65t1iq" path="res://ogat_lobby/lobby/s_lobby.gd" id="2_e1rtu"]
+[ext_resource type="Script" uid="uid://c4rfa1as6oej7" path="res://ogat_lobby/lobby/c_lobby.gd" id="3_xl4vd"]
+
+[node name="OgatLobby" type="Node"]
+script = ExtResource("1_d0lhn")
+
+[node name="Chat" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ChatContainer" type="VBoxContainer" parent="Chat"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 0
+offset_left = -557.0
+offset_top = -271.0
+offset_right = -15.0
+offset_bottom = -15.0
+
+[node name="ChatMessagesScrollContainer" type="ScrollContainer" parent="Chat/ChatContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ChatMessagesContainer" type="VBoxContainer" parent="Chat/ChatContainer/ChatMessagesScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ChatInputContainer" type="HBoxContainer" parent="Chat/ChatContainer"]
+layout_mode = 2
+
+[node name="ChatField" type="LineEdit" parent="Chat/ChatContainer/ChatInputContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "Send a chat message..."
+max_length = 256
+caret_blink = true
+
+[node name="SendButton" type="Button" parent="Chat/ChatContainer/ChatInputContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Send↲"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerList" type="VBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Server" type="Node" parent="."]
+script = ExtResource("2_e1rtu")
+
+[node name="Client" type="Node" parent="."]
+script = ExtResource("3_xl4vd")
+
+[connection signal="text_submitted" from="Chat/ChatContainer/ChatInputContainer/ChatField" to="Client" method="_on_chat_field_text_submitted"]
+[connection signal="pressed" from="Chat/ChatContainer/ChatInputContainer/SendButton" to="Client" method="_on_send_button_pressed"]

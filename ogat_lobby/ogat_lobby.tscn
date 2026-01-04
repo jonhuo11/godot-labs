@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://n6n2rpx6cavk"]
-
-[ext_resource type="Script" uid="uid://cvwqh65pcga1b" path="res://ogat_lobby/ogat_lobby.gd" id="1_d0lhn"]
-
-[node name="OgatLobby" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_d0lhn")
