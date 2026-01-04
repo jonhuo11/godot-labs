@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dmmdpoh5ysdqw"]
+
+[node name="JoinServerButton" type="Button"]
+custom_minimum_size = Vector2(256, 32)
+text = "server 1"
+alignment = 0
