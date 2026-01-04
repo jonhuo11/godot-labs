@@ -20,8 +20,8 @@ extends Node
 
 const SERVER_ID = 1
 
-var s_player_list := {} # id : LobbyPlayer
-var s_message_log := [] # ChatMessage
+var s_player_list: Dictionary[int, LobbyPlayer] = {} # id : LobbyPlayer
+var s_message_log: Array[ChatMessage] = [] # ChatMessage
 
 
 # signals that client side code can subscribe to
@@ -34,6 +34,16 @@ func _ready() -> void:
 
 
 #region Server logic
+func _on_player_connected(p: LobbyPlayer) -> void:
+	# inform the newly connected player of all existing connections
+	for existing_player_id in s_player_list:
+		var existing_player := s_player_list[existing_player_id]
+		inform_connected_rpc.rpc_id(p.id, existing_player.serialize())
+
+	# inform all players the new player connected
+	s_player_list[p.id] = p
+	inform_connected(p)
+
 func _on_recv_message_from_client(msg: ChatMessage) -> void:
 	s_message_log.append(msg)
 	inform_recv_message(msg) # relays message to all clients
@@ -42,23 +52,32 @@ func _on_recv_message_from_client(msg: ChatMessage) -> void:
 	print("server (id: %d) received message %s from %d" % [multiplayer.get_unique_id(), msg.message, multiplayer.get_remote_sender_id()])
 #endregion
 
+
 #region RPC
 @rpc("any_peer", "call_local", "reliable")
-func request_connected_rpc():
+func request_connected_rpc(ppba: PackedByteArray):
 	if !multiplayer.is_server():
 		return
+	var p := LobbyPlayer.new(0, "", "")
+	p.fill_from_serialized(ppba)
+	# the ID will always be their multiplayer ID, ignore whats set here
+	p.id = multiplayer.get_remote_sender_id()
+	_on_player_connected(p)
 
-func request_connected():
-	request_connected_rpc.rpc_id(SERVER_ID)
+func request_connected(p: LobbyPlayer):
+	p.id = -1 # not valid, this is auto set later
+	request_connected_rpc.rpc_id(SERVER_ID, p.serialize())
 
 
 @rpc("authority", "call_local", "reliable")
-func inform_connected_rpc():
+func inform_connected_rpc(ppba: PackedByteArray):
 	# the server calls this on all clients, causing client code to emit a signal
-	pass
+	var p := LobbyPlayer.new(0, "", "")
+	p.fill_from_serialized(ppba)
+	player_connected.emit(p)
 
-func inform_connected():
-	inform_connected_rpc.rpc()
+func inform_connected(p: LobbyPlayer):
+	inform_connected_rpc.rpc(p.serialize())
 
 
 @rpc("authority", "call_local", "reliable")
@@ -69,7 +88,7 @@ func inform_recv_message_rpc(message_pba: PackedByteArray):
 	recv_chat_message.emit(msg)
 
 func inform_recv_message(msg: ChatMessage):
-	inform_recv_message_rpc(msg.serialize())
+	inform_recv_message_rpc.rpc(msg.serialize())
 
 
 @rpc("any_peer", "call_local", "reliable")

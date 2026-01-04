@@ -53,13 +53,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Send↲"
 
-[node name="Control" type="Control" parent="."]
+[node name="PlayerList" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PlayerList" type="VBoxContainer" parent="Control"]
+[node name="PlayerListContainer" type="VBoxContainer" parent="PlayerList"]
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 1
 offset_right = 40.0

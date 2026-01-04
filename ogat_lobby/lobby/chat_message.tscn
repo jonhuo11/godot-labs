@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://catasprnhyobw"]
 
 [node name="ChatMessage" type="Label"]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 32)
 text = "Empty message
 "
 autowrap_mode = 2
